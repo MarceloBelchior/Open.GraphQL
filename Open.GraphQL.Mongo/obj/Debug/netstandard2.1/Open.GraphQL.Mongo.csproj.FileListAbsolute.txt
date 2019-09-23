@@ -1,0 +1,5 @@
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL.Mongo\bin\Debug\netstandard2.1\Open.GraphQL.Mongo.deps.json
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL.Mongo\bin\Debug\netstandard2.1\Open.GraphQL.Mongo.dll
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL.Mongo\obj\Debug\netstandard2.1\Open.GraphQL.Mongo.csprojAssemblyReference.cache
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL.Mongo\obj\Debug\netstandard2.1\Open.GraphQL.Mongo.AssemblyInfoInputs.cache
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL.Mongo\obj\Debug\netstandard2.1\Open.GraphQL.Mongo.AssemblyInfo.cs

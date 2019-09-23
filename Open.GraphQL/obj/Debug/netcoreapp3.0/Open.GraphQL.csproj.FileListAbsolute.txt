@@ -1,0 +1,16 @@
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL\bin\Debug\netcoreapp3.0\appsettings.Development.json
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL\bin\Debug\netcoreapp3.0\appsettings.json
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL\bin\Debug\netcoreapp3.0\Properties\launchSettings.json
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL\bin\Debug\netcoreapp3.0\Open.GraphQL.exe
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL\bin\Debug\netcoreapp3.0\Open.GraphQL.deps.json
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL\bin\Debug\netcoreapp3.0\Open.GraphQL.runtimeconfig.json
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL\bin\Debug\netcoreapp3.0\Open.GraphQL.runtimeconfig.dev.json
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL\bin\Debug\netcoreapp3.0\Open.GraphQL.dll
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL\bin\Debug\netcoreapp3.0\Open.GraphQL.pdb
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL\obj\Debug\netcoreapp3.0\Open.GraphQL.csprojAssemblyReference.cache
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL\obj\Debug\netcoreapp3.0\Open.GraphQL.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL\obj\Debug\netcoreapp3.0\Open.GraphQL.AssemblyInfoInputs.cache
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL\obj\Debug\netcoreapp3.0\Open.GraphQL.AssemblyInfo.cs
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL\obj\Debug\netcoreapp3.0\Open.GraphQL.RazorTargetAssemblyInfo.cache
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL\obj\Debug\netcoreapp3.0\Open.GraphQL.dll
+C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL\obj\Debug\netcoreapp3.0\Open.GraphQL.pdb
