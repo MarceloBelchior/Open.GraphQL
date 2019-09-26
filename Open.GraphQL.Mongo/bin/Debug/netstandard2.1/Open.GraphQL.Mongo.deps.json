@@ -11,7 +11,8 @@
         "dependencies": {
           "AutoMapper": "9.0.0",
           "Microsoft.Extensions.Diagnostics.HealthChecks": "3.0.0",
-          "MongoDB.Driver": "2.9.1"
+          "MongoDB.Driver": "2.9.1",
+          "Polly": "7.1.1"
         },
         "runtime": {
           "Open.GraphQL.Mongo.dll": {}
@@ -265,6 +266,14 @@
           "System.Threading.Timer": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0",
           "System.Xml.XDocument": "4.3.0"
+        }
+      },
+      "Polly/7.1.1": {
+        "runtime": {
+          "lib/netstandard2.0/Polly.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.1.1.0"
+          }
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
@@ -1555,6 +1564,13 @@
       "sha512": "sha512-WcSp3+vP+yHNgS8EV5J7pZ9IRpeDuARBPN28by8zqff1wJQXm26PVU8L3/fYLBJVU7BtDyqNVWq2KlCVvSSR4A==",
       "path": "netstandard.library/1.6.1",
       "hashPath": "netstandard.library.1.6.1.nupkg.sha512"
+    },
+    "Polly/7.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-okRGHVvn0bGCeMBgaCZShlSez8rxjgthyDf/NRTYsSh5kb8IbKnX7W15d3s95Kq9uzwj7tFYiXNrCvn6d0XoeA==",
+      "path": "polly/7.1.1",
+      "hashPath": "polly.7.1.1.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
       "type": "package",

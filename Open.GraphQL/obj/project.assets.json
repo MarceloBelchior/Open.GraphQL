@@ -53,11 +53,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\marcelo.dias\\Documents\\GitHub\\Open.GraphQL\\Open.GraphQL\\Open.GraphQL.csproj",
+      "projectUniqueName": "C:\\Users\\marcelo.dias\\Documents\\GitHub\\open\\Open.GraphQL\\Open.GraphQL\\Open.GraphQL.csproj",
       "projectName": "Open.GraphQL",
-      "projectPath": "C:\\Users\\marcelo.dias\\Documents\\GitHub\\Open.GraphQL\\Open.GraphQL\\Open.GraphQL.csproj",
+      "projectPath": "C:\\Users\\marcelo.dias\\Documents\\GitHub\\open\\Open.GraphQL\\Open.GraphQL\\Open.GraphQL.csproj",
       "packagesPath": "C:\\Users\\marcelo.dias\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\marcelo.dias\\Documents\\GitHub\\Open.GraphQL\\Open.GraphQL\\obj\\",
+      "outputPath": "C:\\Users\\marcelo.dias\\Documents\\GitHub\\open\\Open.GraphQL\\Open.GraphQL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

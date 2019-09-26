@@ -5,10 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.4" />
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="3.0.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.9.1" />
     <PackageReference Include="Polly" Version="7.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Users\Mappers\" />
   </ItemGroup>
 
 </Project>

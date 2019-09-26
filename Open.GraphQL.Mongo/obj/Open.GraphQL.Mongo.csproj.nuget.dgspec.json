@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marcelo.dias\\Documents\\GitHub\\Open.GraphQL\\Open.GraphQL.Mongo\\Open.GraphQL.Mongo.csproj": {}
+    "C:\\Users\\marcelo.dias\\Documents\\GitHub\\open\\Open.GraphQL\\Open.GraphQL.Mongo\\Open.GraphQL.Mongo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marcelo.dias\\Documents\\GitHub\\Open.GraphQL\\Open.GraphQL.Mongo\\Open.GraphQL.Mongo.csproj": {
+    "C:\\Users\\marcelo.dias\\Documents\\GitHub\\open\\Open.GraphQL\\Open.GraphQL.Mongo\\Open.GraphQL.Mongo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marcelo.dias\\Documents\\GitHub\\Open.GraphQL\\Open.GraphQL.Mongo\\Open.GraphQL.Mongo.csproj",
+        "projectUniqueName": "C:\\Users\\marcelo.dias\\Documents\\GitHub\\open\\Open.GraphQL\\Open.GraphQL.Mongo\\Open.GraphQL.Mongo.csproj",
         "projectName": "Open.GraphQL.Mongo",
-        "projectPath": "C:\\Users\\marcelo.dias\\Documents\\GitHub\\Open.GraphQL\\Open.GraphQL.Mongo\\Open.GraphQL.Mongo.csproj",
+        "projectPath": "C:\\Users\\marcelo.dias\\Documents\\GitHub\\open\\Open.GraphQL\\Open.GraphQL.Mongo\\Open.GraphQL.Mongo.csproj",
         "packagesPath": "C:\\Users\\marcelo.dias\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marcelo.dias\\Documents\\GitHub\\Open.GraphQL\\Open.GraphQL.Mongo\\obj\\",
+        "outputPath": "C:\\Users\\marcelo.dias\\Documents\\GitHub\\open\\Open.GraphQL\\Open.GraphQL.Mongo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -47,6 +47,10 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "Autofac": {
+              "target": "Package",
+              "version": "[4.9.4, )"
             },
             "Microsoft.Extensions.Diagnostics.HealthChecks": {
               "target": "Package",

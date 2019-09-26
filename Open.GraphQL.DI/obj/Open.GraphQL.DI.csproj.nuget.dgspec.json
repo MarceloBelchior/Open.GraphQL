@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marcelo.dias\\Documents\\GitHub\\Open.GraphQL\\Open.GraphQL.DI\\Open.GraphQL.DI.csproj": {}
+    "C:\\Users\\marcelo.dias\\Documents\\GitHub\\open\\Open.GraphQL\\Open.GraphQL.DI\\Open.GraphQL.DI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marcelo.dias\\Documents\\GitHub\\Open.GraphQL\\Open.GraphQL.DI\\Open.GraphQL.DI.csproj": {
+    "C:\\Users\\marcelo.dias\\Documents\\GitHub\\open\\Open.GraphQL\\Open.GraphQL.DI\\Open.GraphQL.DI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marcelo.dias\\Documents\\GitHub\\Open.GraphQL\\Open.GraphQL.DI\\Open.GraphQL.DI.csproj",
+        "projectUniqueName": "C:\\Users\\marcelo.dias\\Documents\\GitHub\\open\\Open.GraphQL\\Open.GraphQL.DI\\Open.GraphQL.DI.csproj",
         "projectName": "Open.GraphQL.DI",
-        "projectPath": "C:\\Users\\marcelo.dias\\Documents\\GitHub\\Open.GraphQL\\Open.GraphQL.DI\\Open.GraphQL.DI.csproj",
+        "projectPath": "C:\\Users\\marcelo.dias\\Documents\\GitHub\\open\\Open.GraphQL\\Open.GraphQL.DI\\Open.GraphQL.DI.csproj",
         "packagesPath": "C:\\Users\\marcelo.dias\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marcelo.dias\\Documents\\GitHub\\Open.GraphQL\\Open.GraphQL.DI\\obj\\",
+        "outputPath": "C:\\Users\\marcelo.dias\\Documents\\GitHub\\open\\Open.GraphQL\\Open.GraphQL.DI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
