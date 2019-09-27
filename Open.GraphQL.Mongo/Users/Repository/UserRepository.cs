@@ -27,7 +27,7 @@ namespace Open.GraphQL.Mongo.Users.Repository
             mongoDatabase = GenericMongo.Create(urlMongo);
         }
 
-        public async Task<bool> Adicionar(Users.Documents.User favorito)
+        public async Task<bool> Adicionar(Open.GraphQL.Domain.Users.Model.User user)
         {
             return await _circuitBreaker.ExecuteAsync<dynamic>(async () =>
             {

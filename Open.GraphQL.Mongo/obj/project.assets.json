@@ -1950,6 +1950,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "Open.GraphQL.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Open.GraphQL.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Open.GraphQL.Domain.dll": {}
+        }
       }
     }
   },
@@ -6680,6 +6690,11 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "Open.GraphQL.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Open.GraphQL.Domain/Open.GraphQL.Domain.csproj",
+      "msbuildProject": "../Open.GraphQL.Domain/Open.GraphQL.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6688,6 +6703,7 @@
       "Autofac >= 4.9.4",
       "Microsoft.Extensions.Diagnostics.HealthChecks >= 3.0.0",
       "MongoDB.Driver >= 2.9.1",
+      "Open.GraphQL.Domain >= 1.0.0",
       "Polly >= 7.1.1"
     ]
   },
@@ -6724,7 +6740,11 @@
       },
       "frameworks": {
         "netstandard2.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\marcelo.dias\\Documents\\GitHub\\open\\Open.GraphQL\\Open.GraphQL.Domain\\Open.GraphQL.Domain.csproj": {
+              "projectPath": "C:\\Users\\marcelo.dias\\Documents\\GitHub\\open\\Open.GraphQL\\Open.GraphQL.Domain\\Open.GraphQL.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
