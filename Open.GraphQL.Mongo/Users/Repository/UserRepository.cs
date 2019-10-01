@@ -1,6 +1,7 @@
 ﻿using Autofac.Features.AttributeFilters;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
+using Open.GraphQL.Mongo.Users.Mappers;
 using Polly;
 using System;
 using System.Collections.Generic;
@@ -32,15 +33,13 @@ namespace Open.GraphQL.Mongo.Users.Repository
             return await _circuitBreaker.ExecuteAsync<dynamic>(async () =>
             {
                 var collection = mongoDatabase.GetCollection<Documents.User>(nomeCollection);
-
-                var filter = Builders<Documents.User>.Filter.Eq(s => s.Id, user.Id);
-                var update = Builders<Documents.User>.Update
-                                .Set(s => s.Active, user.Active)
-                                .Set(s => s.Birth, user.Birth);
-
-                UpdateResult actionResult = await collection.UpdateOneAsync(filter, update, new UpdateOptions() { IsUpsert = true });
-
-                return actionResult.IsAcknowledged;
+                var query = Builders<Documents.User>.Filter.And(Builders<Documents.User>.Filter.Eq(eq => eq.Id, user.Id));
+                var result = await collection.ReplaceOneAsync(query, user.Map(),
+                                                    new UpdateOptions()
+                                                    {
+                                                        IsUpsert = true
+                                                    });
+                return result.MatchedCount > 0;
             });
         }
         public async Task<bool> Excluir(Domain.Users.Model.User user)
@@ -53,35 +52,17 @@ namespace Open.GraphQL.Mongo.Users.Repository
                 return actionResult.IsAcknowledged;
             });
         }
-        public async Task<Favorito> GetBySKU(string clienteId, int sku)
-        {
-            var builder = Builders<Documents.FavoritoDocument>.Filter;
-            var condition = builder.Eq(p => p.ClienteId, clienteId);
-            condition = condition & builder.Eq(p => p.Sku, sku);
-            var item = await GetAllByCondition(condition);
-            return item.FirstOrDefault();
-        }
-
-        public async Task<IEnumerable<int>> GetAllByCliente(string clienteId)
-        {
-            var builder = Builders<Documents.FavoritoDocument>.Filter;
-            var condition = builder.Eq(p => p.ClienteId, clienteId);
-
-            return await _circuitBreaker.ExecuteAsync<dynamic>(async () =>
-            {
-                var collection = mongoDatabase.GetCollection<Documents.FavoritoDocument>(nomeCollection);
-                var result = await collection.FindAsync(condition);
-                return result.ToList().Select(s => s.Sku);
-            });
-        }
-
-        private async Task<IEnumerable<Favorito>> GetAllByCondition(FilterDefinition<Documents.FavoritoDocument> condition)
+        public async Task<Domain.Users.Model.User> GetByemailAddress(string email)
         {
             return await _circuitBreaker.ExecuteAsync<dynamic>(async () =>
             {
-                var collection = mongoDatabase.GetCollection<Documents.FavoritoDocument>(nomeCollection);
+                var builder = Builders<Documents.User>.Filter;
+                var condition = builder.Eq(p => p.Email, email);
+
+                var collection = mongoDatabase.GetCollection<Documents.User>(nomeCollection);
                 var result = await collection.FindAsync(condition);
-                return result.ToList().Map();
+                return result.FirstOrDefault().Map();
+
             });
         }
     }
