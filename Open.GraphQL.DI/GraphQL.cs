@@ -1,36 +1,33 @@
 ﻿using System;
-using System.IO;
-using System.Threading;
 using Autofac;
 using Autofac.Features.AttributeFilters;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Microsoft.Extensions.Logging;
+using Open.GraphQL.Domain.Users.Interface;
+using Open.GraphQL.Mongo.Users.Repository;
 using Polly;
 
 namespace Open.GraphQL.DI
 {
-  
-        public class Cliente : Module
+
+    public class Cliente : Module
         {
             protected override void Load(ContainerBuilder builder)
             {
                 var ambiente = System.Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
-                var config = new ConfigurationBuilder()
-               xx.SetBasePath(Directory.GetCurrentDirectory())
-               .AddJsonFile("appsettings.json")
-               .AddJsonFile(string.Format("appsettings.{0}.json", ambiente), optional: true);
+               // var config = new ConfigurationBuilder()
+               //.SetBasePath(Directory.GetCurrentDirectory())
+               //.AddJsonFile("appsettings.json")
+               //.AddJsonFile(string.Format("appsettings.{0}.json", ambiente), optional: true);
 
-                var configuration = config?.Build();
-                builder.RegisterInstance(configuration);
+               // var configuration = config?.Build();
+               // builder.RegisterInstance(configuration);
 
-                var canSource = new CancellationTokenSource();
-                var can = canSource.Token;
+               // var canSource = new CancellationTokenSource();
+               // var can = canSource.Token;
 
-                var _appSettings = configuration.GetSection("configuracao");
+               // var _appSettings = configuration.GetSection("configuracao");
 
-                builder.RegisterInstance(_appSettings).As<IConfigurationSection>();
+               // builder.RegisterInstance(_appSettings).As<IConfigurationSection>();
 
             //    builder.Register((c, p) => new LoggerFactory().AddLog4Net("log4net.config").CreateLogger("Cliente")).As(typeof(Microsoft.Extensions.Logging.ILogger)).SingleInstance();
 
@@ -40,7 +37,7 @@ namespace Open.GraphQL.DI
                     .CircuitBreakerAsync(
                         exceptionsAllowedBeforeBreaking: 10,
                         durationOfBreak: TimeSpan.FromSeconds(30))
-                    ).As<IAsyncPolicy>().Keyed<IAsyncPolicy>("Favorito");
+                    ).As<IAsyncPolicy>().Keyed<IAsyncPolicy>("User");
 
                 //builder.RegisterInstance(
                 //    Policy
@@ -77,7 +74,7 @@ namespace Open.GraphQL.DI
                 //builder.RegisterType<Application.Services.FavoritoService>().As<Application.Services.IFavoritoService>().SingleInstance().WithAttributeFiltering();
                 //builder.RegisterType<MongoDB.Cliente.Repositories.FavoritoRepository>().As<Domain.Repositories.IFavoritoRepository>().SingleInstance().WithAttributeFiltering();
 
-                //builder.RegisterType<Application.Services.CadastroService>().As<Application.Services.ICadastroService>().SingleInstance().WithAttributeFiltering();
+                builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance().WithAttributeFiltering();
 
 
                 //builder.RegisterType<Application.Reagendamento.Service.ReagendamentoService>().As<Application.Reagendamento.Services.IReagendamentoService>().SingleInstance().WithAttributeFiltering();
