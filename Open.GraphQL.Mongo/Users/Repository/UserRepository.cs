@@ -33,22 +33,22 @@ namespace Open.GraphQL.Mongo.Users.Repository
             {
                 var collection = mongoDatabase.GetCollection<Documents.User>(nomeCollection);
 
-                var filter = Builders<Documents.User>.Filter.Eq(s => s.Id, favorito.Id);
+                var filter = Builders<Documents.User>.Filter.Eq(s => s.Id, user.Id);
                 var update = Builders<Documents.User>.Update
-                                .Set(s => s.ClienteId, favorito.ClienteId)
-                                .Set(s => s.Sku, favorito.Sku);
+                                .Set(s => s.Active, user.Active)
+                                .Set(s => s.Birth, user.Birth);
 
                 UpdateResult actionResult = await collection.UpdateOneAsync(filter, update, new UpdateOptions() { IsUpsert = true });
 
                 return actionResult.IsAcknowledged;
             });
         }
-        public async Task<bool> Excluir(Favorito favorito)
+        public async Task<bool> Excluir(Domain.Users.Model.User user)
         {
             return await _circuitBreaker.ExecuteAsync<dynamic>(async () =>
             {
-                var collection = mongoDatabase.GetCollection<Documents.FavoritoDocument>(nomeCollection);
-                var filter = Builders<FavoritoDocument>.Filter.Eq(s => s.Sku, favorito.Sku);
+                var collection = mongoDatabase.GetCollection<Documents.User>(nomeCollection);
+                var filter = Builders<Documents.User>.Filter.Eq(s => s.Id, user.Id);
                 var actionResult = await collection.DeleteOneAsync(filter);
                 return actionResult.IsAcknowledged;
             });
