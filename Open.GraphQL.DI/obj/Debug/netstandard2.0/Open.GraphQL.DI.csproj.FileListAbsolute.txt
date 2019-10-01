@@ -1,5 +1,0 @@
-C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL.DI\bin\Debug\netstandard2.0\Open.GraphQL.DI.deps.json
-C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL.DI\bin\Debug\netstandard2.0\Open.GraphQL.DI.dll
-C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL.DI\obj\Debug\netstandard2.0\Open.GraphQL.DI.csprojAssemblyReference.cache
-C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL.DI\obj\Debug\netstandard2.0\Open.GraphQL.DI.AssemblyInfoInputs.cache
-C:\Users\marcelo.dias\source\repos\Open.GraphQL\Open.GraphQL.DI\obj\Debug\netstandard2.0\Open.GraphQL.DI.AssemblyInfo.cs
