@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Open.GraphQL.Mongo.Users.Repository
 {
-    public class UserRepository //: Domain.Repositories.IFavoritoRepository
+    public class UserRepository : Domain.Users.Interface.IUserRepository
     {
         private readonly string urlMongo;
         private readonly IMongoDatabase mongoDatabase;
