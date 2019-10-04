@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using Autofac;
 using Autofac.Features.AttributeFilters;
 using Microsoft.Extensions.Configuration;
@@ -15,59 +16,29 @@ namespace Open.GraphQL.DI
     {
         protected override void Load(ContainerBuilder builder)
         {
+            #region Variables 
             var _environment = System.Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-            var config = new ConfigurationBuilder()           
+            var config = new ConfigurationBuilder()
                .SetBasePath(Directory.GetCurrentDirectory())
                .AddJsonFile("appsettings.json")
                .AddJsonFile(string.Format("appsettings.{0}.json", _environment), optional: true);
+            #endregion
+            #region config
+            var configuration = config?.Build();
+            builder.RegisterInstance(configuration);
 
-            // var configuration = config?.Build();
-            // builder.RegisterInstance(configuration);
+            var canSource = new CancellationTokenSource();
+            var can = canSource.Token;
 
-            // var canSource = new CancellationTokenSource();
-            // var can = canSource.Token;
-
-            // var _appSettings = configuration.GetSection("configuracao");
-
-            // builder.RegisterInstance(_appSettings).As<IConfigurationSection>();
+            var _appSettings = configuration.GetSection("configuration");
+            builder.RegisterInstance(_appSettings).As<IConfigurationSection>();
+            #endregion
 
             //    builder.Register((c, p) => new LoggerFactory().AddLog4Net("log4net.config").CreateLogger("Cliente")).As(typeof(Microsoft.Extensions.Logging.ILogger)).SingleInstance();
 
             builder.RegisterInstance(
-                    Policy
-                    .Handle<Exception>()
-                    .CircuitBreakerAsync(
-                        exceptionsAllowedBeforeBreaking: 10,
-                        durationOfBreak: TimeSpan.FromSeconds(30))
-                    ).As<IAsyncPolicy>().Keyed<IAsyncPolicy>("User");
-
-            //builder.RegisterInstance(
-            //    Policy
-            //    .Handle<Exception>()
-            //    .CircuitBreakerAsync(
-            //        exceptionsAllowedBeforeBreaking: 10,
-            //        durationOfBreak: TimeSpan.FromSeconds(30))
-            //    ).As<IAsyncPolicy>().Keyed<IAsyncPolicy>("Pedido");
-
-            //var retryOMS = Policy
-            //   .Handle<Exception>()
-            //   .WaitAndRetryAsync(3, i => TimeSpan.FromSeconds(2))
-            //   .WrapAsync(Policy.Handle<Exception>().CircuitBreakerAsync(
-            //               exceptionsAllowedBeforeBreaking: 10,
-            //               durationOfBreak: TimeSpan.FromSeconds(30)));
-
-            //var retryCliente = Policy
-            //   .Handle<Exception>()
-            //   .WaitAndRetryAsync(3, i => TimeSpan.FromSeconds(2))
-            //   .WrapAsync(Policy.Handle<Exception>().CircuitBreakerAsync(
-            //               exceptionsAllowedBeforeBreaking: 10,
-            //               durationOfBreak: TimeSpan.FromSeconds(30)));
-            //var retryEntrega = Policy
-            //   .Handle<Exception>()
-            //   .WaitAndRetryAsync(3, i => TimeSpan.FromSeconds(2))
-            //   .WrapAsync(Policy.Handle<Exception>().CircuitBreakerAsync(
-            //               exceptionsAllowedBeforeBreaking: 10,
-            //               durationOfBreak: TimeSpan.FromSeconds(30)));
+                Policy.Handle<Exception>().CircuitBreakerAsync(exceptionsAllowedBeforeBreaking: 10, 
+                durationOfBreak: TimeSpan.FromSeconds(30))).As<IAsyncPolicy>().Keyed<IAsyncPolicy>("User");
 
             //builder.Register((c, p) => new Framework.Servico.HttpHelper(retryOMS)).As<Framework.Servico.IHttpHelper>().Keyed<Framework.Servico.IHttpHelper>("OMS").SingleInstance();
             //builder.Register((c, p) => new Framework.Servico.HttpHelper(retryCliente)).As<Framework.Servico.IHttpHelper>().Keyed<Framework.Servico.IHttpHelper>("Cliente").SingleInstance();
