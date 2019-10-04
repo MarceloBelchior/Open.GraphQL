@@ -5,6 +5,7 @@ using System.Threading;
 using Autofac;
 using Autofac.Features.AttributeFilters;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Open.GraphQL.Domain.Users.Interface;
 using Open.GraphQL.Mongo.Users.Repository;
 using Polly;
@@ -61,7 +62,7 @@ namespace Open.GraphQL.DI
 
             //builder.RegisterType<Application.Cliente.Services.ClienteService>().As<Application.Cliente.Services.IClienteService>().SingleInstance().WithAttributeFiltering();
 
-            //builder.RegisterType<MongoDB.MongoHealthCheck>().As<IHealthCheck>().SingleInstance().WithAttributeFiltering();
+            builder.RegisterType<Open.GraphQL.Mongo.MongoHealthCheck>().As<IHealthCheck>().SingleInstance().WithAttributeFiltering();
 
         }
     }
