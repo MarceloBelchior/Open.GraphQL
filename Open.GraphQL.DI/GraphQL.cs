@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Autofac;
 using Autofac.Features.AttributeFilters;
 using Microsoft.Extensions.Configuration;
@@ -14,18 +15,11 @@ namespace Open.GraphQL.DI
     {
         protected override void Load(ContainerBuilder builder)
         {
-            var ambiente = System.Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-
-            var _dic = new Dictionary<string, string>();
-            _dic.Add("Development", "appSetting.Development.json");
-            _dic.Add("Production", "appSetting.Production.json");
-            IConfiguration configuration;
-            configuration.GetSection("Development");
-            var config = new ConfigurationBuilder().AddConfiguration(n
-           .AddConfiguration);
-               //.SetBasePath(Directory.GetCurrentDirectory())
-               //.AddJsonFile("appsettings.json")
-               //.AddJsonFile(string.Format("appsettings.{0}.json", ambiente), optional: true);
+            var _environment = System.Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            var config = new ConfigurationBuilder()           
+               .SetBasePath(Directory.GetCurrentDirectory())
+               .AddJsonFile("appsettings.json")
+               .AddJsonFile(string.Format("appsettings.{0}.json", _environment), optional: true);
 
             // var configuration = config?.Build();
             // builder.RegisterInstance(configuration);
