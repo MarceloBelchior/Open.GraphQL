@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading;
-using Autofac;
+﻿using Autofac;
 using Autofac.Features.AttributeFilters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Open.GraphQL.Domain.Users.Interface;
 using Open.GraphQL.Mongo.Users.Repository;
 using Polly;
+using System;
+using System.IO;
+using System.Threading;
 
 namespace Open.GraphQL.DI
 {
@@ -36,8 +35,9 @@ namespace Open.GraphQL.DI
             #endregion
 
             builder.RegisterInstance(
-                Policy.Handle<Exception>().CircuitBreakerAsync(exceptionsAllowedBeforeBreaking: 10, 
+                Policy.Handle<Exception>().CircuitBreakerAsync(exceptionsAllowedBeforeBreaking: 10,
                 durationOfBreak: TimeSpan.FromSeconds(30))).As<IAsyncPolicy>().Keyed<IAsyncPolicy>("MongoUser");
+
             builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance().WithAttributeFiltering();
             builder.RegisterType<Open.GraphQL.Mongo.MongoHealthCheck>().As<IHealthCheck>().SingleInstance().WithAttributeFiltering();
 
