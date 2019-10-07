@@ -35,33 +35,10 @@ namespace Open.GraphQL.DI
             builder.RegisterInstance(_appSettings).As<IConfigurationSection>();
             #endregion
 
-            //    builder.Register((c, p) => new LoggerFactory().AddLog4Net("log4net.config").CreateLogger("Cliente")).As(typeof(Microsoft.Extensions.Logging.ILogger)).SingleInstance();
-
             builder.RegisterInstance(
                 Policy.Handle<Exception>().CircuitBreakerAsync(exceptionsAllowedBeforeBreaking: 10, 
-                durationOfBreak: TimeSpan.FromSeconds(30))).As<IAsyncPolicy>().Keyed<IAsyncPolicy>("User");
-
-            //builder.Register((c, p) => new Framework.Servico.HttpHelper(retryOMS)).As<Framework.Servico.IHttpHelper>().Keyed<Framework.Servico.IHttpHelper>("OMS").SingleInstance();
-            //builder.Register((c, p) => new Framework.Servico.HttpHelper(retryCliente)).As<Framework.Servico.IHttpHelper>().Keyed<Framework.Servico.IHttpHelper>("Cliente").SingleInstance();
-            //builder.Register((c, p) => new Framework.Servico.HttpHelper(retryEntrega)).As<Framework.Servico.IHttpHelper>().Keyed<Framework.Servico.IHttpHelper>("Entrega").SingleInstance();
-
-            //builder.RegisterType<Application.Services.FavoritoService>().As<Application.Services.IFavoritoService>().SingleInstance().WithAttributeFiltering();
-            //builder.RegisterType<MongoDB.Cliente.Repositories.FavoritoRepository>().As<Domain.Repositories.IFavoritoRepository>().SingleInstance().WithAttributeFiltering();
-
+                durationOfBreak: TimeSpan.FromSeconds(30))).As<IAsyncPolicy>().Keyed<IAsyncPolicy>("MongoUser");
             builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance().WithAttributeFiltering();
-
-
-            //builder.RegisterType<Application.Reagendamento.Service.ReagendamentoService>().As<Application.Reagendamento.Services.IReagendamentoService>().SingleInstance().WithAttributeFiltering();
-            //builder.RegisterType<Http.Entrega.Repositories.TokStokRepository>().As<Domain.Reagendamento.ITokStokRepository>().SingleInstance().WithAttributeFiltering();
-
-            //builder.RegisterType<Application.Services.PedidoService>().As<Application.Services.IPedidoService>().SingleInstance().WithAttributeFiltering();
-            //builder.RegisterType<MongoDB.Pedido.Repositories.PedidoRepository>().As<Domain.Repositories.IPedidoRepository>().Keyed<Domain.Repositories.IPedidoRepository>("DB").SingleInstance().WithAttributeFiltering();
-
-            //builder.RegisterType<Http.Repositories.VtexRepository>().As<Domain.Repositories.IPedidoRepository>().Keyed<Domain.Repositories.IPedidoRepository>("HTTP").SingleInstance().WithAttributeFiltering();
-            //builder.RegisterType<Http.Repositories.VtexClienteRepository>().As<Domain.Repositories.IClienteRepository>().SingleInstance().WithAttributeFiltering();
-
-            //builder.RegisterType<Application.Cliente.Services.ClienteService>().As<Application.Cliente.Services.IClienteService>().SingleInstance().WithAttributeFiltering();
-
             builder.RegisterType<Open.GraphQL.Mongo.MongoHealthCheck>().As<IHealthCheck>().SingleInstance().WithAttributeFiltering();
 
         }

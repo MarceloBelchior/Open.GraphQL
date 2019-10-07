@@ -19,7 +19,7 @@ namespace Open.GraphQL.Mongo.Users.Repository
 
         private const string nomeCollection = "UserRepository";
 
-        public UserRepository(IConfigurationSection appSettings, [KeyFilter("User")]IAsyncPolicy circuitBreaker)
+        public UserRepository(IConfigurationSection appSettings, [KeyFilter("MongoUser")]IAsyncPolicy circuitBreaker)
         {
             _appSettings = appSettings ?? throw new ArgumentNullException(nameof(appSettings));
             _circuitBreaker = circuitBreaker;
