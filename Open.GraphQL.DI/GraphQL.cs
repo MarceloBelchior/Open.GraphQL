@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Open.GraphQL.Domain.Users.Interface;
 using Open.GraphQL.Mongo.Users.Repository;
+using Open.GraphQL.Service.Interface.User.Interface;
+using Open.GraphQL.Service.User.Service;
 using Polly;
 using System;
 using System.IO;
@@ -39,6 +41,7 @@ namespace Open.GraphQL.DI
                 durationOfBreak: TimeSpan.FromSeconds(30))).As<IAsyncPolicy>().Keyed<IAsyncPolicy>("MongoUser");
 
             builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance().WithAttributeFiltering();
+            builder.RegisterType<UserService>().As<IUserService>().SingleInstance().WithAttributeFiltering();
             builder.RegisterType<Open.GraphQL.Mongo.MongoHealthCheck>().As<IHealthCheck>().SingleInstance().WithAttributeFiltering();
 
         }

@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Open.GraphQL.Domain\Open.GraphQL.Domain.csproj" />
     <ProjectReference Include="..\Open.GraphQL.Mongo\Open.GraphQL.Mongo.csproj" />
+    <ProjectReference Include="..\Open.GraphQL.Service\Open.GraphQL.Service.csproj" />
   </ItemGroup>
 
 </Project>

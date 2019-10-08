@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Open.GraphQL.Domain\Open.GraphQL.Domain.csproj" />
+    <ProjectReference Include="..\Open.GraphQL.Service.Interface\Open.GraphQL.Service.Interface.csproj" />
   </ItemGroup>
 
   <ItemGroup>
