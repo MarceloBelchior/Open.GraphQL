@@ -42,6 +42,7 @@ namespace Open.GraphQL.DI
 
             builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance().WithAttributeFiltering();
             builder.RegisterType<UserService>().As<IUserService>().SingleInstance().WithAttributeFiltering();
+
             builder.RegisterType<Open.GraphQL.Mongo.MongoHealthCheck>().As<IHealthCheck>().SingleInstance().WithAttributeFiltering();
 
         }
