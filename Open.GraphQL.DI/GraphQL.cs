@@ -14,7 +14,7 @@ using System.Threading;
 namespace Open.GraphQL.DI
 {
 
-    public class Cliente : Module
+    public class GraphQL : Module
     {
         protected override void Load(ContainerBuilder builder)
         {

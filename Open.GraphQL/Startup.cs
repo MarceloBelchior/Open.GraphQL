@@ -1,8 +1,12 @@
-﻿using GraphQL.Server;
+﻿using Autofac;
+using GraphQL.Server;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Open.GraphQL.Mongo;
 using Polly;
 using Polly.Extensions.Http;
 using System;
@@ -12,43 +16,33 @@ namespace Open.GraphQL
 {
     public class Startup
     {
-
-
-        private readonly IHostingEnvironment _env;
-        private readonly IConfiguration _config;
-
-
-        private static IAsyncPolicy<HttpResponseMessage> GetCircuitBreakerPolicy()
+        public IConfiguration Configuration { get; }
+        public Startup(IConfiguration configuration)
         {
-            return HttpPolicyExtensions
-                .HandleTransientHttpError()
-                .CircuitBreakerAsync(5, TimeSpan.FromSeconds(30));
+            Configuration = configuration;
         }
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule(new GraphQL.DI.GraphQL());
+        }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
-            //services.AddMvc()
-            //    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-            //    .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
-
-            ////services.AddHealthChecks();
-
-            //services.AddHealthChecks()
-            //      .AddCheck<MongoDB.MongoHealthCheck>("mongodb",
-            //                                   failureStatus: HealthStatus.Unhealthy,
-            //                                   tags: new[] { "elasticsearch" });
-
-
-
-
-
-            //services.AddSwaggerGen(s => {
-            //    s.SwaggerDoc("v1", new Info { Title = "Catalogo.WebApi", Version = "V1" });
-            //    s.EnableAnnotations();
-            //});
-
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Acesso", policyUser =>
+                {
+                    policyUser.RequireClaim("Acesso", "CanRead");
+                });
+            });
+            services.AddHealthChecks()
+                  .AddCheck<MongoHealthCheck>("mongodb",
+                                               failureStatus: HealthStatus.Unhealthy,
+                                               tags: new[] { "elasticsearch" });
         }
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
 

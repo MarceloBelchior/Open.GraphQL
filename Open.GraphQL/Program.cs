@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Autofac.Extensions.DependencyInjection;
 
 namespace Open.GraphQL
 {
@@ -11,7 +12,8 @@ namespace Open.GraphQL
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+              WebHost.CreateDefaultBuilder(args)
+                  .ConfigureServices(services => services.AddAutofac())
+                  .UseStartup<Startup>();
     }
 }
