@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using GraphQL.Server;
+using GraphQL.Server.Ui.Playground;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -16,10 +17,12 @@ namespace Open.GraphQL
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; }
-        public Startup(IConfiguration configuration)
+        public IConfiguration _config { get; }
+        private readonly IHostingEnvironment _env;
+        public Startup(IConfiguration config, IHostingEnvironment env)
         {
-            Configuration = configuration;
+            _config = config;
+            _env = env;
         }
         public void ConfigureContainer(ContainerBuilder builder)
         {
@@ -40,6 +43,11 @@ namespace Open.GraphQL
                   .AddCheck<MongoHealthCheck>("mongodb",
                                                failureStatus: HealthStatus.Unhealthy,
                                                tags: new[] { "elasticsearch" });
+          //  services.AddScoped<CarvedRockSchema>();
+
+            services.AddGraphQL(o => { o.ExposeExceptions = _env.IsDevelopment(); })
+                .AddGraphTypes(ServiceLifetime.Scoped).AddUserContextBuilder(httpContext => httpContext.User)
+                .AddDataLoader();
         }
 
 
@@ -50,11 +58,13 @@ namespace Open.GraphQL
             {
                 app.UseDeveloperExceptionPage();
             }
+          //  app.UseGraphQL<CarvedRockSchema>();
+            app.UseGraphQLPlayground(new GraphQLPlaygroundOptions());
 
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
+            //app.Run(async (context) =>
+            //{
+            //    await context.Response.WriteAsync("Hello World!");
+            //});
         }
     }
 }

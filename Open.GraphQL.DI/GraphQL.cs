@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿
+using Autofac;
 using Autofac.Features.AttributeFilters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -11,11 +12,14 @@ using System;
 using System.IO;
 using System.Threading;
 
+
+
 namespace Open.GraphQL.DI
 {
 
     public class GraphQL : Module
     {
+
         protected override void Load(ContainerBuilder builder)
         {
             #region Variables 
