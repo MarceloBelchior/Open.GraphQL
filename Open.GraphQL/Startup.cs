@@ -26,7 +26,7 @@ namespace Open.GraphQL
         }
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            builder.RegisterModule(new GraphQL.DI.GraphQL());
+            builder.RegisterModule(new Open.GraphQL.DI.GraphQL());
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -58,7 +58,7 @@ namespace Open.GraphQL
             {
                 app.UseDeveloperExceptionPage();
             }
-          //  app.UseGraphQL<CarvedRockSchema>();
+            app.UseGraphQL<GraphQL.UserSchema>();
             app.UseGraphQLPlayground(new GraphQLPlaygroundOptions());
 
             //app.Run(async (context) =>
