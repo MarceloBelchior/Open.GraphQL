@@ -12,7 +12,6 @@ namespace Open.GraphQL.Domain.Users.Model
         public DateTime Created { get; set; }
         public DateTime Update { get; set; }
         public bool Active { get; set; }
-
         public string ExternalAuth { get; set; }
         public DateTime Birth { get; set; }
         public string FirstName { get; set; }
