@@ -13,6 +13,7 @@ namespace Open.GraphQL.GraphQL.Types
             Field(t => t.active);
             Field(t => t.name);
             Field(t => t.email);
+            Field(t => t.active).Description("If this user has active at database");
             Field(t => t.birth).Description("birth date of the user");
             Field(t => t.lastaccess).Description("Date of last access to the page");
             //Field(t => t.Price);
