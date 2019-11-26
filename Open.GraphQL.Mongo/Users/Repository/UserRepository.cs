@@ -30,7 +30,7 @@ namespace Open.GraphQL.Mongo.Users.Repository
 
         public async Task<bool> Adicionar(Open.GraphQL.Domain.Users.Model.User user)
         {
-            return await _circuitBreaker.ExecuteAsync<dynamic>(async () =>
+            return await _circuitBreaker.ExecuteAsync<bool>(async () =>
             {
                 var collection = mongoDatabase.GetCollection<Documents.User>(nomeCollection);
                 var query = Builders<Documents.User>.Filter.And(Builders<Documents.User>.Filter.Eq(eq => eq.Id, user.Id));
