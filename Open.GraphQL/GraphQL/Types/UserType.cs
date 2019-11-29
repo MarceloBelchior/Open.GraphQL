@@ -1,4 +1,5 @@
 ﻿using GraphQL.Types;
+using Open.GraphQL.Service.Interface.User.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace Open.GraphQL.GraphQL.Types
 {
     public class UserType : ObjectGraphType<Service.Interface.User.Model.User>
     {
-        public UserType()//ProductReviewRepository reviewRepository, IDataLoaderContextAccessor dataLoaderAccessor)
+        public UserType(IUserService userService)//ProductReviewRepository reviewRepository, IDataLoaderContextAccessor dataLoaderAccessor)
         {
             Field(t => t.active);
             Field(t => t.name);
