@@ -9,7 +9,7 @@ namespace Open.GraphQL.GraphQL
         public UserSchema(IDependencyResolver resolver) : base(resolver)
         {
 
-            // Query = resolver.Resolve<CarvedRockQuery>();
+            Query = resolver.Resolve<UserQuery>();
             // Mutation = resolver.Resolve<CarvedRockMutation>();
         }
     }

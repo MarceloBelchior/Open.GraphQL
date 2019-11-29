@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using GraphQL;
 using GraphQL.Server;
 using GraphQL.Server.Ui.Playground;
 using Microsoft.AspNetCore.Builder;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Open.GraphQL.GraphQL;
 using Open.GraphQL.Mongo;
 using Polly;
 using Polly.Extensions.Http;
@@ -24,10 +26,6 @@ namespace Open.GraphQL
             _config = config;
             _env = env;
         }
-        public void ConfigureContainer(ContainerBuilder builder)
-        {
-            builder.RegisterModule(new Open.GraphQL.DI.GraphQL());
-        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -43,11 +41,17 @@ namespace Open.GraphQL
                   .AddCheck<MongoHealthCheck>("mongodb",
                                                failureStatus: HealthStatus.Unhealthy,
                                                tags: new[] { "elasticsearch" });
-          //  services.AddScoped<CarvedRockSchema>();
+            //  services.AddScoped<CarvedRockSchema>();
+            services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
+            services.AddScoped<UserSchema>();
 
             services.AddGraphQL(o => { o.ExposeExceptions = _env.IsDevelopment(); })
                 .AddGraphTypes(ServiceLifetime.Scoped).AddUserContextBuilder(httpContext => httpContext.User)
                 .AddDataLoader();
+        }
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule(new Open.GraphQL.DI.GraphQL());
         }
 
 
@@ -58,6 +62,8 @@ namespace Open.GraphQL
             {
                 app.UseDeveloperExceptionPage();
             }
+
+
             app.UseGraphQL<GraphQL.UserSchema>();
             app.UseGraphQLPlayground(new GraphQLPlaygroundOptions());
 

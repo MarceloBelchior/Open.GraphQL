@@ -24,6 +24,10 @@ namespace Open.GraphQL.Service.User.Service
         {
             return await userRepository.Excluir(new Domain.Users.Model.User() { Email = user.email });
         }
+        public  async Task<dynamic> GetUserByEmail(Interface.User.Model.User user)
+        {
+            return await userRepository.GetByemailAddress(user.email);
+        }
 
     }
 }

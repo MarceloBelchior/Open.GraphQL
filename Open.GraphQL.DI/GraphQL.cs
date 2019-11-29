@@ -38,6 +38,8 @@ namespace Open.GraphQL.DI
 
             var _appSettings = configuration.GetSection("configuration");
             builder.RegisterInstance(_appSettings).As<IConfigurationSection>();
+
+
             #endregion
 
             builder.RegisterInstance(
