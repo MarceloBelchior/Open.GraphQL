@@ -42,9 +42,10 @@ namespace Open.GraphQL
                                                failureStatus: HealthStatus.Unhealthy,
                                                tags: new[] { "elasticsearch" });
             //  services.AddScoped<CarvedRockSchema>();
-            services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
             services.AddScoped<UserSchema>();
 
+            services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
+    
             services.AddGraphQL(o => { o.ExposeExceptions = _env.IsDevelopment(); })
                 .AddGraphTypes(ServiceLifetime.Scoped).AddUserContextBuilder(httpContext => httpContext.User)
                 .AddDataLoader();
