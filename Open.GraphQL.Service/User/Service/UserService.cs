@@ -12,21 +12,31 @@ namespace Open.GraphQL.Service.User.Service
         public readonly IUserRepository userRepository;
         public UserService(IUserRepository _userRepository) => userRepository = _userRepository;
 
-        public async Task<dynamic> CreatedUser(Interface.User.Model.User user)
+        public async Task<Interface.User.Model.User> CreatedUser(Interface.User.Model.User user)
         {
-            return await userRepository.Adicionar(new Domain.Users.Model.User() { Email = user.email });
+            var result = await userRepository.Adicionar(new Domain.Users.Model.User() { Email = user.email });
+            if (result == true)
+                return user;
+            return null;
         }
-        public async Task<dynamic> UpdateUser(Interface.User.Model.User user)
+        public async Task<Interface.User.Model.User> UpdateUser(Interface.User.Model.User user)
         {
-            return await userRepository.GetByemailAddress(user.email);
+            var result = await userRepository.GetByemailAddress(user.email);
+            var i = new Interface.User.Model.User();
+            i.active = result.Active;
+            i.birth = result.Birth;
+            i.email = result.Email;
+            return i;
+
         }
-        public async Task<dynamic> DeleteUser(Interface.User.Model.User user)
+        public async Task<bool> DeleteUser(Interface.User.Model.User user)
         {
             return await userRepository.Excluir(new Domain.Users.Model.User() { Email = user.email });
         }
-        public  async Task<dynamic> GetUserByEmail(Interface.User.Model.User user)
+        public async Task<Interface.User.Model.User> GetUserByEmail(Interface.User.Model.User user)
         {
-            return await userRepository.GetByemailAddress(user.email);
+            var result = await userRepository.GetByemailAddress(user.email);
+            return new Interface.User.Model.User() { email = result.Email };
         }
 
     }

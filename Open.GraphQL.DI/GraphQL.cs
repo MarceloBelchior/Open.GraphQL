@@ -1,6 +1,7 @@
 ﻿
 using Autofac;
 using Autofac.Features.AttributeFilters;
+using GraphQL;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Open.GraphQL.Domain.Users.Interface;
@@ -30,7 +31,7 @@ namespace Open.GraphQL.DI
                .AddJsonFile(string.Format("appsettings.{0}.json", _environment), optional: true);
             #endregion
             #region config
-            var configuration = config?.Build();
+            var configuration = config.Build();
             builder.RegisterInstance(configuration);
 
             var canSource = new CancellationTokenSource();
@@ -45,8 +46,8 @@ namespace Open.GraphQL.DI
             builder.RegisterInstance(
                 Policy.Handle<Exception>().CircuitBreakerAsync(exceptionsAllowedBeforeBreaking: 10,
                 durationOfBreak: TimeSpan.FromSeconds(30))).As<IAsyncPolicy>().Keyed<IAsyncPolicy>("MongoUser");
+  
 
-     
             builder.RegisterType<UserService>().As<IUserService>().SingleInstance().WithAttributeFiltering();
             builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance().WithAttributeFiltering();
             builder.RegisterType<Open.GraphQL.Mongo.MongoHealthCheck>().As<IHealthCheck>().SingleInstance().WithAttributeFiltering();

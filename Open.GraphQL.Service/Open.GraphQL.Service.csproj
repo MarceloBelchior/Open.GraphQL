@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <UserSecretsId>c92f22cf-d9f3-47f3-a049-0e6e81fa305b</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,7 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="User\Mapper\" />
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="GraphQL" Version="2.4.0" />
   </ItemGroup>
 
 </Project>

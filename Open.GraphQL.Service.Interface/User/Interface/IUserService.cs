@@ -7,9 +7,9 @@ namespace Open.GraphQL.Service.Interface.User.Interface
 {
    public interface IUserService
     {
-        Task<dynamic> CreatedUser(Model.User user);
-        Task<dynamic> UpdateUser(Model.User user);
-        Task<dynamic> DeleteUser(Model.User user);
-        Task<dynamic> GetUserByEmail(Model.User user);
+        Task<Model.User> CreatedUser(Model.User user);
+        Task<Model.User> UpdateUser(Model.User user);
+        Task<bool> DeleteUser(Model.User user);
+        Task<Model.User> GetUserByEmail(Model.User user);
     }
 }

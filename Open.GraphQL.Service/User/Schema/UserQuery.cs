@@ -9,21 +9,19 @@ namespace Open.GraphQL.GraphQL
 {
     public class UserQuery : ObjectGraphType
     {
-          private readonly IUserService _userService;
+        private readonly IUserService _userService;
         public UserQuery(IUserService userService)
         {
             _userService = userService;
-            Field<ListGraphType<Types.UserType>>("user",
+            Field<ListGraphType<Service.User.GraphQLTypes.UserType>>("user",
                 arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "email" }),
                     resolve: content =>
                 {
                     var email = content.GetArgument<string>("email");
-                    return  Task.Run(() =>
-                    {
-                        _userService.GetUserByEmail(new Service.Interface.User.Model.User() { email = email });
-                    });
-
+                    return _userService.GetUserByEmail(new Service.Interface.User.Model.User() { email = email });
                 });
+
+
         }
     }
 }

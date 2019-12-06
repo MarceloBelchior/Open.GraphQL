@@ -13,7 +13,7 @@ namespace Open.GraphQL
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
               WebHost.CreateDefaultBuilder(args)
-                  .ConfigureServices(services => services.AddAutofac())
+                  .ConfigureServices(services => { services.AddAutofac(); })
                   .UseStartup<Startup>();
     }
 }

@@ -5,11 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Open.GraphQL.GraphQL.Types
+namespace Open.GraphQL.Service.User.GraphQLTypes
 {
-    public class UserType : ObjectGraphType<Service.Interface.User.Model.User>
+    public class UserType : ObjectGraphType<Interface.User.Model.User>
     {
-        public UserType(IUserService userService)//ProductReviewRepository reviewRepository, IDataLoaderContextAccessor dataLoaderAccessor)
+        public UserType()//ProductReviewRepository reviewRepository, IDataLoaderContextAccessor dataLoaderAccessor)
         {
             Field(t => t.active);
             Field(t => t.name);
