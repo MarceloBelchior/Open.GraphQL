@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Open.GraphQL.Service.Interf
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Store", "0 - Store", "{14A6F7E7-B594-4BB5-B28C-B3BD91309C3A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - UI", "3 - UI", "{FC2E3D37-BAC0-428A-BF06-C2F8D4AD03F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.UI", "Open.UI\Open.UI.csproj", "{7DD47E5F-27E7-453E-A455-D8AF1425BC90}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +45,10 @@ Global
 		{179EC4AF-3100-45F1-95D5-AECFFF4DB099}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{179EC4AF-3100-45F1-95D5-AECFFF4DB099}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{179EC4AF-3100-45F1-95D5-AECFFF4DB099}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DD47E5F-27E7-453E-A455-D8AF1425BC90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DD47E5F-27E7-453E-A455-D8AF1425BC90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DD47E5F-27E7-453E-A455-D8AF1425BC90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DD47E5F-27E7-453E-A455-D8AF1425BC90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +56,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{997E95F1-4C18-49DD-8894-F7D5D1B5EDDF} = {14A6F7E7-B594-4BB5-B28C-B3BD91309C3A}
 		{052BC6EA-1D6B-4F02-9B7A-C204F4C1AAD6} = {14A6F7E7-B594-4BB5-B28C-B3BD91309C3A}
+		{7DD47E5F-27E7-453E-A455-D8AF1425BC90} = {FC2E3D37-BAC0-428A-BF06-C2F8D4AD03F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8870A8E9-6090-4BAC-ADA4-A8A3E1D0FEB5}
