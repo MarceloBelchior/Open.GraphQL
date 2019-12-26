@@ -9,7 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Open.GraphQL.GraphQL;
+
 using Open.GraphQL.Mongo;
+using Open.GraphQL.QGL.Schema;
 using Polly;
 using Polly.Extensions.Http;
 using System;
@@ -46,14 +48,27 @@ namespace Open.GraphQL
             //                                   failureStatus: HealthStatus.Unhealthy,
             //                                   tags: new[] { "elasticsearch" });
             //  services.AddScoped<CarvedRockSchema>();
-
             services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
             services.AddScoped<UserSchema>();
+            //services.AddScoped<UserQuery>();
+            //   services.AddSingleton<ReviewMessageService>();
 
-     
             services.AddGraphQL(o => { o.ExposeExceptions = _env.IsDevelopment(); })
                 .AddGraphTypes(ServiceLifetime.Scoped).AddUserContextBuilder(httpContext => httpContext.User)
                 .AddDataLoader();
+                
+
+            services.AddCors();
+
+
+
+            //services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
+            //services.AddScoped<UserSchema>();
+
+     
+            //services.AddGraphQL(o => { o.ExposeExceptions = _env.IsDevelopment(); })
+            //    .AddGraphTypes(ServiceLifetime.Scoped).AddUserContextBuilder(httpContext => httpContext.User)
+            //    .AddDataLoader();
         }
 
 
@@ -64,7 +79,8 @@ namespace Open.GraphQL
             {
                 app.UseDeveloperExceptionPage();
             }
-
+         //   app.UseGraphQLWebSockets<CarvedRockSchema>("/graphql");
+          //  app.UseGraphQL<CarvedRockSchema>();
 
             app.UseGraphQL<UserSchema>();
             app.UseGraphQLPlayground(new GraphQLPlaygroundOptions());

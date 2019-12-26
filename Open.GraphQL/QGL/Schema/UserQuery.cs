@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Open.GraphQL.GraphQL
+namespace Open.GraphQL.QGL.Schema
 {
     public class UserQuery : ObjectGraphType
     {

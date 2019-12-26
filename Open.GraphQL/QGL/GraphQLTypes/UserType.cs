@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Open.GraphQL.Service.User.GraphQLTypes
+namespace Open.GraphQL.QGL.GraphQLTypes
 {
-    public class UserType : ObjectGraphType<Interface.User.Model.User>
+    public class UserType : ObjectGraphType<Model.User>
     {
         public UserType()//ProductReviewRepository reviewRepository, IDataLoaderContextAccessor dataLoaderAccessor)
         {

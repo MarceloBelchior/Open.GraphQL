@@ -2,9 +2,9 @@
 using GraphQL.Types;
 
 
-namespace Open.GraphQL.GraphQL
+namespace Open.GraphQL.QGL.Schema
 {
-    public class UserSchema : Schema
+    public class UserSchema : GraphQL.Types. Schema
     {
         public UserSchema(IDependencyResolver resolver) : base(resolver)
         {

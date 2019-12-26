@@ -5,6 +5,7 @@ using GraphQL;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Open.GraphQL.Domain.Users.Interface;
+using Open.GraphQL.GraphQL;
 using Open.GraphQL.Mongo.Users.Repository;
 using Open.GraphQL.Service.Interface.User.Interface;
 using Open.GraphQL.Service.User.Service;
@@ -46,7 +47,6 @@ namespace Open.GraphQL.DI
             builder.RegisterInstance(
                 Policy.Handle<Exception>().CircuitBreakerAsync(exceptionsAllowedBeforeBreaking: 10,
                 durationOfBreak: TimeSpan.FromSeconds(30))).As<IAsyncPolicy>().Keyed<IAsyncPolicy>("MongoUser");
-  
 
             builder.RegisterType<UserService>().As<IUserService>().SingleInstance().WithAttributeFiltering();
             builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance().WithAttributeFiltering();
